@@ -33,7 +33,9 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           password: ${{ secrets.VM_PASSWORD }}
           script: |
-            docker pull chetan2308/flask-docker-app:latest
+           
             docker stop flask-app || true
             docker rm flask-app || true
+            docker stop $(docker ps -q --filter "publish=5000") || true
+            docker pull chetan2308/flask-docker-app:latest
             docker run -d --name flask-app -p 5000:5000 chetan2308/flask-docker-app:latest
