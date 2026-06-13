@@ -54,9 +54,19 @@ jobs:
         working-directory: ./terraform
 
       - name: terraform plan
-        run: terraform plan -var="admin_username=azureuser"
+        run: terraform plan 
         working-directory: ./terraform
+        env:
+          TF_VAR_resource_group_name: ${{ secrets.TF_VAR_RESOURCE_GROUP_NAME }}
+          TF_VAR_location: ${{ secrets.TF_VAR_LOCATION }}
+          TF_VAR_vm_size: ${{ secrets.TF_VAR_VM_SIZE }}
+          TF_VAR_admin_username: ${{ secrets.TF_VAR_ADMIN_USERNAME }}
 
       - name: Apply Terraform configuration
-        run: terraform apply -auto-approve -var="admin_username=azureuser"
+        run: terraform apply -auto-approve 
         working-directory: ./terraform
+        env:
+          TF_VAR_resource_group_name: ${{ secrets.TF_VAR_RESOURCE_GROUP_NAME }}
+          TF_VAR_location: ${{ secrets.TF_VAR_LOCATION }}
+          TF_VAR_vm_size: ${{ secrets.TF_VAR_VM_SIZE }}
+          TF_VAR_admin_username: ${{ secrets.TF_VAR_ADMIN_USERNAME }}
