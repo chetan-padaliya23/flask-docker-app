@@ -61,6 +61,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
     systemctl start docker
 
     usermod -aG docker azureuser
+    docker pull chetan2308/flask-docker-app:latest
+    docker run -d --name flask-app -p 5000:5000 --restart unless-stopped chetan2308/flask-docker-app:latest
   EOF
   )
   admin_ssh_key {
