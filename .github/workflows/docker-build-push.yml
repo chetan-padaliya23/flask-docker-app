@@ -61,6 +61,7 @@ jobs:
           TF_VAR_location: ${{ secrets.TF_VAR_LOCATION }}
           TF_VAR_vm_size: ${{ secrets.TF_VAR_VM_SIZE }}
           TF_VAR_admin_username: ${{ secrets.TF_VAR_ADMIN_USERNAME }}
+          TF_VAR_ssh_public_key: ${{ secrets.TF_VAR_SSH_PUBLIC_KEY }}
 
       - name: Apply Terraform configuration
         run: terraform apply -auto-approve 
@@ -70,3 +71,4 @@ jobs:
           TF_VAR_location: ${{ secrets.TF_VAR_LOCATION }}
           TF_VAR_vm_size: ${{ secrets.TF_VAR_VM_SIZE }}
           TF_VAR_admin_username: ${{ secrets.TF_VAR_ADMIN_USERNAME }}
+          TF_VAR_ssh_public_key: ${{ secrets.TF_VAR_SSH_PUBLIC_KEY }}
