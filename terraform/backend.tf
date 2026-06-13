@@ -5,4 +5,12 @@ terraform {
       version = "~> 3.0"
     }
   }
+
+
+  backend "azurerm" {
+    resource_group_name  = "rg-flask-app"
+    storage_account_name = "flaskappbackendstate"
+    container_name       = "tfstate1"
+    key                  = "terraform.tfstate"
+  }
 }
